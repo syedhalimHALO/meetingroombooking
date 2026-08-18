@@ -1,11 +1,13 @@
 // Paste the Firebase web configuration from Firebase Console here.
-export const firebaseConfig = {
-  apiKey: 'YOUR_FIREBASE_API_KEY',
-  authDomain: 'YOUR_PROJECT.firebaseapp.com',
-  projectId: 'YOUR_PROJECT_ID',
-  storageBucket: 'YOUR_PROJECT.firebasestorage.app',
-  messagingSenderId: 'YOUR_MESSAGING_SENDER_ID',
-  appId: 'YOUR_APP_ID'
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyCo5gP5_Rc8h6bBPJN3FS7MuDhgjBB2DlA",
+  authDomain: "meeting-room-booking-fd327.firebaseapp.com",
+  projectId: "meeting-room-booking-fd327",
+  storageBucket: "meeting-room-booking-fd327.firebasestorage.app",
+  messagingSenderId: "515553617833",
+  appId: "1:515553617833:web:913fa3b67ee083de0806b8",
+  measurementId: "G-Y669CT4KLF"
 };
 
 export const appConfig = {
