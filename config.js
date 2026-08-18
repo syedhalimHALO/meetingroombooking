@@ -1,6 +1,6 @@
 window.APP_CONFIG = {
-  supabaseUrl: 'YOUR_SUPABASE_URL',
-  supabaseAnonKey: 'YOUR_SUPABASE_ANON_KEY',
+  supabaseUrl: 'https://hizzowxftuzafapzqkza.supabase.co',
+  supabaseAnonKey: 'sb_publishable_jk7fKrOyvfGeA0z0BjBM8w_bkR6JF4X',
   roomSlug: 'marketing-meeting-room',
   timezone: 'Asia/Kuala_Lumpur',
   enableAzureLogin: false,
