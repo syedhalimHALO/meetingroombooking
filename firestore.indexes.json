@@ -1,1 +1,0 @@
-{"indexes":[{"collectionGroup":"bookings","queryScope":"COLLECTION","fields":[{"fieldPath":"roomId","order":"ASCENDING"},{"fieldPath":"status","order":"ASCENDING"},{"fieldPath":"dayKey","order":"ASCENDING"},{"fieldPath":"startAt","order":"ASCENDING"}]}],"fieldOverrides":[]}
