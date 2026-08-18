@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+<!-- Halo Meeting Room Booking · Build 2026-08-18 v2.3 Recurring Bookings -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Meeting Room — Booking System</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     --ink:#14213A;
@@ -86,7 +87,7 @@
 
   /* ---------- MONTH CONTROLS ---------- */
   .controls{
-    max-width:820px; margin:20px auto 0; padding:0 20px;
+    max-width:984px; margin:20px auto 0; padding:0 20px;
     display:flex; align-items:center; justify-content:space-between; gap:10px;
   }
   .month-nav{ display:flex; align-items:center; gap:10px; }
@@ -108,7 +109,7 @@
 
   /* ---------- MONTH GRID ---------- */
   .grid-wrap{
-    max-width:820px; margin:16px auto 0; padding:0 20px;
+    max-width:984px; margin:16px auto 0; padding:0 20px;
   }
   .weekday-row{
     display:grid; grid-template-columns:repeat(7, 1fr); gap:6px;
@@ -123,7 +124,7 @@
   }
   .day-cell{
     background:var(--panel); border:1px solid var(--line); border-radius:10px;
-    min-height:88px; padding:6px 7px; cursor:pointer;
+    min-height:106px; padding:7px 8px; cursor:pointer;
     display:flex; flex-direction:column; gap:3px;
     transition:border-color .15s, background .15s;
   }
@@ -150,7 +151,7 @@
   }
 
   .hint{
-    max-width:820px; margin:14px auto 0; padding:0 20px;
+    max-width:984px; margin:14px auto 0; padding:0 20px;
     font-size:12.5px; color:var(--ink-soft); text-align:center;
   }
 
@@ -268,6 +269,73 @@
   }
   .toast.show{ opacity:1; transform:translateX(-50%) translateY(0); }
   .toast-dot{ width:7px; height:7px; border-radius:50%; background:var(--amber); flex-shrink:0; }
+
+  /* Dealer Poster Dashboard visual system */
+  :root{
+    --ink:#1A2332; --ink-soft:#5B7A78; --paper:#F4F9F7; --panel:#FFFFFF;
+    --line:#DCE9E7; --amber:#E4A94A; --amber-deep:#B77A1D; --amber-bg:#FBF0DC;
+    --green:#1F6363; --green-bg:#E4F3F1; --red:#C25656; --red-bg:#FBEDED;
+    --teal:#2D8B8B; --teal-dark:#1F6363; --seafoam:#A8DADC;
+    --font-display:'PT Sans',sans-serif; --font-body:'PT Sans',sans-serif;
+  }
+  .board{ border-bottom-color:var(--teal); }
+  .board-top,.status-row{ max-width:984px; margin-left:auto; margin-right:auto; }
+  .board-top{ gap:18px; }
+  .eyebrow{ color:var(--seafoam); }
+  .board-right{ display:flex; align-items:flex-start; gap:14px; }
+  .brand-logo{ width:64px; height:64px; object-fit:contain; flex-shrink:0; filter:drop-shadow(0 5px 12px rgba(0,0,0,.22)); }
+  .day-cell:hover{ border-color:var(--teal); background:#F4FAF9; }
+  .day-cell.today{ border-color:var(--teal); box-shadow:0 0 0 1px var(--teal) inset; }
+  .day-cell.today .day-num{ color:var(--teal-dark); }
+  .day-cell.past{ background:#EDF3F1; color:#8DA29F; }
+  .day-cell.past:hover{ background:#EDF3F1; border-color:var(--line); }
+  .day-chip{ background:#E4F3F1; color:var(--teal-dark); }
+  .day-chip:hover{ background:var(--seafoam); color:var(--ink); }
+  .slot-body:hover{ background:#EAF6F4; }
+  .slot-body:hover::after{ color:var(--teal-dark); }
+  .event-block{ border-left-color:var(--teal); }
+  .field input:focus,.field select:focus{ border-color:var(--teal); box-shadow:0 0 0 3px rgba(45,139,139,.1); }
+
+  @media (max-width:599px){
+    body{ padding-bottom:28px; }
+    .board{ padding:14px 16px 17px; }
+    .credit{ padding-bottom:8px; font-size:9px; }
+    .board-top{ align-items:center; }
+    .eyebrow{ font-size:9px; letter-spacing:.09em; }
+    .room-name{ font-size:20px; line-height:1.05; max-width:180px; }
+    .board-right{ gap:8px; align-items:center; }
+    .brand-logo{ width:48px; height:48px; }
+    .clock{ font-size:20px; }
+    .date-label{ font-size:9.5px; }
+    .status-row{ margin-top:13px; flex-wrap:wrap; gap:7px; }
+    .status-pill{ font-size:10.5px; padding:6px 10px; }
+    .status-note{ font-size:11.5px; }
+    .controls{ margin-top:14px; padding:0 12px; }
+    .month-nav{ gap:5px; }
+    .nav-btn{ width:38px; height:38px; }
+    .month-current{ min-width:112px; font-size:15px; }
+    .today-btn{ padding:7px 9px; font-size:10.5px; }
+    .grid-wrap{ padding:0 8px; margin-top:12px; }
+    .weekday-row,.month-grid{ gap:3px; }
+    .weekday-row div{ font-size:8.5px; }
+    .day-cell{ min-height:66px; border-radius:7px; padding:4px; gap:2px; }
+    .day-num{ font-size:10.5px; }
+    .day-chip{ font-size:8px; padding:2px 3px; }
+    .day-more{ font-size:8px; padding-left:2px; }
+    .hint{ padding:0 14px; font-size:11px; }
+    .modal{ padding:18px 16px 22px; }
+    .row2{ gap:8px; }
+    .detail-actions{ flex-direction:column; }
+    .toast{ max-width:calc(100vw - 28px); width:max-content; font-size:12.5px; }
+  }
+  @media (max-width:380px){
+    .clock{ font-size:15px; letter-spacing:0; }
+    .date-label{ font-size:8px; }
+    .brand-logo{ width:40px; height:40px; }
+    .room-name{ max-width:150px; }
+    .month-current{ min-width:100px; font-size:14px; }
+    .day-cell{ min-height:60px; }
+  }
 </style>
 </head>
 <body>
@@ -275,15 +343,19 @@
   
 
   <div class="board">
-	  <div class="credit">Developed by <span>Syed Halim</span> (Marketing, Halo Telco)</div>
+	 
     <div class="board-top">
       <div>
-        <div class="eyebrow">Meeting Rooom Booking System</div>
+		   <div class="credit">Developed by <span>Syed Halim</span></div>
+        <div class="eyebrow">Meeting Room Booking System</div>
         <div class="room-name">Marketing Department</div>
       </div>
-      <div>
-        <div class="clock" id="clock">--:--</div>
-        <div class="date-label" id="todayLabel">—</div>
+      <div class="board-right">
+        <div class="clock-wrap">
+          <div class="clock" id="clock">--:--</div>
+          <div class="date-label" id="todayLabel">—</div>
+        </div>
+        <img class="brand-logo" src="halo-telco-logo.png" alt="Halo Telco logo">
       </div>
     </div>
     <div class="status-row">
@@ -359,6 +431,21 @@
         <label>Number of attendees</label>
         <input type="number" id="fAttendees" min="1" max="30" value="4">
       </div>
+      <div class="field">
+        <label>Repeat</label>
+        <select id="fRepeat">
+          <option value="none">Does not repeat</option>
+          <option value="daily">Daily</option>
+          <option value="weekly">Weekly</option>
+          <option value="monthly">Monthly</option>
+          <option value="weekdays">Every weekday (Monday to Friday)</option>
+        </select>
+      </div>
+      <div class="field" id="repeatEndField" style="display:none">
+        <label>Repeat until</label>
+        <input type="date" id="fRepeatEnd">
+        <div class="modal-sub" id="repeatSummary" style="margin-top:6px"></div>
+      </div>
       <div class="err" id="formErr"></div>
       <button class="submit-btn" id="submitBook">Confirm Booking</button>
     </div>
@@ -377,6 +464,7 @@
       <div class="detail-row"><span class="detail-label">Department</span><span class="detail-value" id="dDept">—</span></div>
       <div class="detail-row"><span class="detail-label">Time</span><span class="detail-value" id="dTime">—</span></div>
       <div class="detail-row"><span class="detail-label">Attendees</span><span class="detail-value" id="dAttendees">—</span></div>
+      <div class="detail-row"><span class="detail-label">Repeat</span><span class="detail-value" id="dRepeat">Does not repeat</span></div>
       <div class="detail-actions">
         <button class="edit-btn" id="editBook">Edit Booking</button>
         <button class="cancel-btn" id="cancelBook">Cancel Booking</button>
@@ -443,6 +531,68 @@ async function storageSet(key, value){
   return { key, value };
 }
 
+async function getBookingsForDate(date){
+  const key = 'bookings:' + fmtDateKey(date);
+  try{
+    const res = await storageGet(key);
+    return res ? JSON.parse(res.value) : [];
+  }catch(e){ return []; }
+}
+
+function addMonthsSafe(date, months){
+  const d = new Date(date);
+  d.setMonth(d.getMonth() + months);
+  return startOfDay(d);
+}
+
+function monthlyOrdinalDate(baseDate, targetMonth){
+  const weekday = baseDate.getDay();
+  const ordinal = Math.floor((baseDate.getDate() - 1) / 7) + 1;
+  const first = new Date(targetMonth.getFullYear(), targetMonth.getMonth(), 1);
+  const day = 1 + ((weekday - first.getDay() + 7) % 7) + (ordinal - 1) * 7;
+  const result = new Date(targetMonth.getFullYear(), targetMonth.getMonth(), day);
+  return result.getMonth() === targetMonth.getMonth() ? result : null;
+}
+
+function buildOccurrenceDates(repeat, endDate){
+  const dates = [startOfDay(selectedDate)];
+  if(repeat === 'none') return dates;
+  const end = startOfDay(endDate);
+  if(repeat === 'daily' || repeat === 'weekdays'){
+    const cursor = new Date(selectedDate);
+    while(true){
+      cursor.setDate(cursor.getDate() + 1);
+      if(cursor > end) break;
+      if(repeat === 'daily' || (cursor.getDay() !== 0 && cursor.getDay() !== 6)) dates.push(startOfDay(cursor));
+    }
+  }else if(repeat === 'weekly'){
+    const cursor = new Date(selectedDate);
+    while(true){
+      cursor.setDate(cursor.getDate() + 7);
+      if(cursor > end) break;
+      dates.push(startOfDay(cursor));
+    }
+  }else if(repeat === 'monthly'){
+    for(let i=1; i<=24; i++){
+      const month = new Date(selectedDate.getFullYear(), selectedDate.getMonth() + i, 1);
+      const occurrence = monthlyOrdinalDate(selectedDate, month);
+      if(month > end) break;
+      if(occurrence && occurrence <= end) dates.push(startOfDay(occurrence));
+    }
+  }
+  return dates;
+}
+
+function repeatLabel(repeat){
+  const weekday = selectedDate ? selectedDate.toLocaleDateString('en-US', {weekday:'long'}) : '';
+  const ordinal = selectedDate ? ['first','second','third','fourth','fifth'][Math.floor((selectedDate.getDate()-1)/7)] : '';
+  if(repeat === 'daily') return 'Daily';
+  if(repeat === 'weekly') return `Weekly on ${weekday}`;
+  if(repeat === 'monthly') return `Monthly on the ${ordinal} ${weekday}`;
+  if(repeat === 'weekdays') return 'Every weekday (Monday to Friday)';
+  return 'Does not repeat';
+}
+
 function buildTimeOptions(select){
   select.innerHTML = '';
   for(let t = DAY_START*60; t <= DAY_END*60; t += SLOT_MIN){
@@ -457,11 +607,11 @@ buildTimeOptions(document.getElementById('fEnd'));
 
 function renderClock(){
   const now = new Date();
-  clockEl.textContent = now.toLocaleTimeString('en-GB', {hour:'2-digit', minute:'2-digit'});
+  clockEl.textContent = now.toLocaleTimeString('en-GB', {hour:'2-digit', minute:'2-digit', second:'2-digit'});
   todayLabel.textContent = now.toLocaleDateString('en-US', {weekday:'short', day:'numeric', month:'short'});
 }
 renderClock();
-setInterval(renderClock, 1000*15);
+setInterval(renderClock, 1000);
 
 // ---------- Load month data ----------
 async function loadMonth(){
@@ -650,7 +800,18 @@ function escapeHtml(s){
 const bookOverlay = document.getElementById('bookOverlay');
 const fStart = document.getElementById('fStart');
 const fEnd = document.getElementById('fEnd');
+const fRepeat = document.getElementById('fRepeat');
+const fRepeatEnd = document.getElementById('fRepeatEnd');
+const repeatEndField = document.getElementById('repeatEndField');
+const repeatSummary = document.getElementById('repeatSummary');
 const formErr = document.getElementById('formErr');
+
+function updateRepeatUI(){
+  const recurring = fRepeat.value !== 'none';
+  repeatEndField.style.display = recurring ? 'block' : 'none';
+  repeatSummary.textContent = recurring ? repeatLabel(fRepeat.value) : '';
+}
+fRepeat.addEventListener('change', updateRepeatUI);
 
 function openBookingForm(slotStart){
   if(!selectedDate || isPastDate(selectedDate)){
@@ -664,6 +825,13 @@ function openBookingForm(slotStart){
   document.getElementById('fDept').value = '';
   document.getElementById('fPurpose').value = '';
   document.getElementById('fAttendees').value = 4;
+  fRepeat.value = 'none';
+  const defaultEnd = addMonthsSafe(selectedDate, 3);
+  fRepeatEnd.value = fmtDateKey(defaultEnd);
+  fRepeatEnd.min = fmtDateKey(selectedDate);
+  fRepeatEnd.max = fmtDateKey(addMonthsSafe(selectedDate, 12));
+  fRepeat.disabled = false;
+  updateRepeatUI();
   fStart.value = slotStart;
   fEnd.value = Math.min(slotStart + 60, DAY_END*60);
   document.querySelector('#bookOverlay .modal-title').textContent = 'Book This Room';
@@ -685,6 +853,7 @@ document.getElementById('submitBook').addEventListener('click', async () => {
   const attendees = parseInt(document.getElementById('fAttendees').value, 10) || 1;
   const start = parseInt(fStart.value, 10);
   const end = parseInt(fEnd.value, 10);
+  const repeat = editingBookingId ? 'none' : fRepeat.value;
 
   if(!name || !purpose){
     formErr.textContent = 'Please fill in your name and meeting purpose.';
@@ -696,28 +865,55 @@ document.getElementById('submitBook').addEventListener('click', async () => {
     formErr.style.display = 'block';
     return;
   }
-  const overlap = currentDayBookings.some(b => b.id !== editingBookingId && start < b.end && end > b.start);
-  if(overlap){
-    formErr.textContent = 'This slot overlaps an existing booking. Please choose another time.';
+  if(repeat !== 'none' && !fRepeatEnd.value){
+    formErr.textContent = 'Please select when the recurring booking should end.';
     formErr.style.display = 'block';
     return;
+  }
+  const recurrenceEnd = repeat === 'none' ? selectedDate : new Date(fRepeatEnd.value + 'T00:00:00');
+  if(recurrenceEnd < selectedDate){
+    formErr.textContent = 'Repeat end date cannot be before the first meeting.';
+    formErr.style.display = 'block';
+    return;
+  }
+  const occurrenceDates = buildOccurrenceDates(repeat, recurrenceEnd);
+  const occurrenceData = [];
+  for(const date of occurrenceDates){
+    const bookings = isSameDay(date, selectedDate) ? currentDayBookings.slice() : await getBookingsForDate(date);
+    const overlap = bookings.some(b => b.id !== editingBookingId && start < b.end && end > b.start);
+    if(overlap){
+      formErr.textContent = `Unable to create the series. ${date.toLocaleDateString('en-GB', {day:'numeric', month:'short', year:'numeric'})} at ${minsToLabel(start)} overlaps an existing booking.`;
+      formErr.style.display = 'block';
+      return;
+    }
+    occurrenceData.push({date, bookings});
   }
 
   if(editingBookingId){
     const booking = currentDayBookings.find(b => b.id === editingBookingId);
     if(booking) Object.assign(booking, {name, dept, purpose, attendees, start, end});
+    currentDayBookings.sort((a,b)=>a.start-b.start);
+    await saveDayBookings();
   }else{
-    currentDayBookings.push({
-      id: Date.now().toString(36),
-      name, dept, purpose, attendees, start, end
-    });
+    const seriesId = repeat === 'none' ? null : 'series-' + Date.now().toString(36);
+    const label = repeatLabel(repeat);
+    for(let i=0; i<occurrenceData.length; i++){
+      const {date, bookings} = occurrenceData[i];
+      bookings.push({
+        id: Date.now().toString(36) + '-' + i,
+        seriesId, name, dept, purpose, attendees, start, end,
+        repeat, repeatLabel:label, seriesStart:fmtDateKey(selectedDate), seriesEnd:fmtDateKey(recurrenceEnd)
+      });
+      bookings.sort((a,b)=>a.start-b.start);
+      await storageSet('bookings:' + fmtDateKey(date), JSON.stringify(bookings));
+      if(isSameDay(date, selectedDate)) currentDayBookings = bookings;
+    }
+    await loadMonth();
   }
-  currentDayBookings.sort((a,b)=>a.start-b.start);
-  await saveDayBookings();
   bookOverlay.classList.remove('show');
   dayOverlay.classList.add('show');
   renderDayTimeline();
-  showToast((editingBookingId ? 'Booking updated · ' : 'Booking confirmed · ') + minsToLabel(start) + ' – ' + minsToLabel(end));
+  showToast(editingBookingId ? 'Booking updated' : (repeat === 'none' ? 'Booking confirmed' : `${occurrenceDates.length} recurring bookings created`));
   editingBookingId = null;
 });
 
@@ -742,6 +938,7 @@ function openDetail(b){
   document.getElementById('dDept').textContent = b.dept || '—';
   document.getElementById('dTime').textContent = minsToLabel(b.start) + ' – ' + minsToLabel(b.end);
   document.getElementById('dAttendees').textContent = b.attendees + ' people';
+  document.getElementById('dRepeat').textContent = b.repeatLabel || 'Does not repeat';
   document.getElementById('editBook').style.display = isPastDate(selectedDate) ? 'none' : '';
   dayOverlay.classList.remove('show');
   detailOverlay.classList.add('show');
@@ -765,6 +962,9 @@ document.getElementById('editBook').addEventListener('click', () => {
   document.getElementById('fAttendees').value = b.attendees || 1;
   fStart.value = b.start;
   fEnd.value = b.end;
+  fRepeat.value = 'none';
+  fRepeat.disabled = true;
+  updateRepeatUI();
   document.querySelector('#bookOverlay .modal-title').textContent = 'Edit Booking';
   document.getElementById('submitBook').textContent = 'Save Changes';
   detailOverlay.classList.remove('show');
@@ -772,12 +972,33 @@ document.getElementById('editBook').addEventListener('click', () => {
 });
 
 document.getElementById('cancelBook').addEventListener('click', async () => {
-  currentDayBookings = currentDayBookings.filter(b => b.id !== activeBookingId);
-  await saveDayBookings();
+  const booking = currentDayBookings.find(b => b.id === activeBookingId);
+  const bookingName = booking ? `\n\n${booking.purpose}\n${minsToLabel(booking.start)} – ${minsToLabel(booking.end)}` : '';
+  const seriesWarning = booking && booking.seriesId ? '\n\nThis is a recurring meeting. This occurrence and all future occurrences in the series will be cancelled.' : '';
+  const confirmed = window.confirm('Warning: Are you sure you want to cancel this booking?' + bookingName + seriesWarning + '\n\nThis action cannot be undone.');
+  if(!confirmed) return;
+  if(booking && booking.seriesId){
+    const listRes = await storageList('bookings:');
+    const keys = (listRes && listRes.keys) ? listRes.keys : [];
+    const selectedKey = fmtDateKey(selectedDate);
+    for(const key of keys){
+      const dateKey = key.replace('bookings:', '');
+      if(dateKey < selectedKey) continue;
+      const res = await storageGet(key);
+      const bookings = res ? JSON.parse(res.value) : [];
+      const filtered = bookings.filter(b => b.seriesId !== booking.seriesId);
+      if(filtered.length !== bookings.length) await storageSet(key, JSON.stringify(filtered));
+    }
+    currentDayBookings = currentDayBookings.filter(b => b.seriesId !== booking.seriesId);
+    await loadMonth();
+  }else{
+    currentDayBookings = currentDayBookings.filter(b => b.id !== activeBookingId);
+    await saveDayBookings();
+  }
   detailOverlay.classList.remove('show');
   dayOverlay.classList.add('show');
   renderDayTimeline();
-  showToast('Booking cancelled');
+  showToast(booking && booking.seriesId ? 'Recurring booking cancelled from this date' : 'Booking cancelled');
 });
 
 // ---------- Toast ----------
