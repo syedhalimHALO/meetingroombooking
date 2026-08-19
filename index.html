@@ -112,7 +112,7 @@
     max-width:984px; margin:16px auto 0; padding:0 20px;
   }
   .weekday-row{
-    display:grid; grid-template-columns:repeat(7, 1fr); gap:6px;
+    display:grid; grid-template-columns:repeat(7, minmax(0, 1fr)); gap:6px;
     margin-bottom:6px;
   }
   .weekday-row div{
@@ -120,13 +120,14 @@
     color:var(--ink-soft); text-align:center; padding-bottom:2px;
   }
   .month-grid{
-    display:grid; grid-template-columns:repeat(7, 1fr); gap:6px;
+    display:grid; grid-template-columns:repeat(7, minmax(0, 1fr)); gap:6px;
   }
   .day-cell{
     background:var(--panel); border:1px solid var(--line); border-radius:10px;
     min-height:106px; padding:7px 8px; cursor:pointer;
     display:flex; flex-direction:column; gap:3px;
     transition:border-color .15s, background .15s;
+    min-width:0; width:100%; overflow:hidden;
   }
   .day-cell:hover{ border-color:var(--amber-deep); background:#FFFDF8; }
   .day-cell.empty{ background:transparent; border-color:transparent; cursor:default; }
@@ -144,7 +145,10 @@
     border-radius:4px; padding:2px 5px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;
     font-family:var(--font-mono);
     cursor:pointer;
+    display:flex; align-items:center; gap:4px; width:100%; min-width:0;
   }
+  .chip-time{ flex:0 0 auto; font-weight:600; }
+  .chip-title{ min-width:0; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
   .day-chip:hover{ background:#F6DFB5; color:#69420D; }
   .day-more{
     font-size:9.5px; color:var(--ink-soft); font-family:var(--font-mono); padding-left:5px;
@@ -690,8 +694,14 @@ function renderMonthGrid(){
     bookings.slice(0, maxChips).forEach(b => {
       const chip = document.createElement('div');
       chip.className = 'day-chip';
-      chip.textContent = minsToLabel(b.start).replace(' ', '') + ' ' + b.purpose;
-      chip.title = 'View booking details';
+      const time = document.createElement('span');
+      time.className = 'chip-time';
+      time.textContent = minsToLabel(b.start).replace(':00', '').replace(' ', '');
+      const title = document.createElement('span');
+      title.className = 'chip-title';
+      title.textContent = b.purpose;
+      chip.append(time, title);
+      chip.title = `${minsToLabel(b.start)} – ${minsToLabel(b.end)} · ${b.purpose} · ${b.name}`;
       chip.addEventListener('click', (e) => {
         e.stopPropagation();
         selectedDate = startOfDay(thisDate);
